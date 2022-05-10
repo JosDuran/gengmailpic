@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            .headerTwoDiv{
+                margin:1% auto;
+                margin-right: auto; margin-left: auto; width: 70%; 
+                padding-top: 11px;
+                padding-bottom: 11px;
+            }
+            </style>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
+    <body>
+        <div class = 'w3-card-4 headerTwoDiv'>
+            <div class="w3-container w3-teal">
+                <h2> Testing Canvas </h2>
+            </div>
+           
+            <div>
+                <label for="gmailuser">Nombre de usuario de gmail:</label><br>
+                <input type="text" id="idgmail" name="idgmail">
+                <button id ="butejec" onclick="gentext()">gen gmail image</button> <br>       
+                <canvas id="myCanvas" width="400" height="100"
+                style="border:1px solid #d3d3d3;">
+                Your browser does not support the canvas element.
+                </canvas>
+            </div>
+        </div>
+        <script>
+            function gentext() {
+                var canvas = document.getElementById("myCanvas");
+                var ctx = canvas.getContext("2d");
+                
+                ctx.font = "30px Arial";
+                var atext = document.getElementById("idgmail").value;
+                atext = atext + '@g'
+                ctx.fillText(atext,10,50);
+                var alenghftext =  ctx.measureText(atext).width;
+                var image=new Image();
+                image.onload=function(){
+                    ctx.drawImage(image,10+alenghftext,25,30,30);
+                };
+                image.src='Mfromgmail.png'; 
+                atext = 'ail.com'
+                
+                ctx.fillText(atext,40+alenghftext,50);      
+            }
+            
+            </script>
+    </body>
+</html>
